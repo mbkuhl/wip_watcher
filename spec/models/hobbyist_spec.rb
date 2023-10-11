@@ -10,7 +10,7 @@ describe Hobbyist, type: :model do
       expect(hobbyist.has_kids).to eq(false)
     end
   end
-
+ 
   describe 'instance methods' do
     
   end
