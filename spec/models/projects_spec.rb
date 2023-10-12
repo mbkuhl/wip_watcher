@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Project, type: :model do
+  it {should belong_to :hobbyist}
   describe '#create' do
     it 'can create objects from data' do
       hobbyist = Hobbyist.create!(name: "Mike", weekly_free_hours: 12, disposible_income: 1000, has_kids: false)

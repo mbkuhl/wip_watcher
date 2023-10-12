@@ -19,7 +19,6 @@ RSpec.describe "Projects Show", type: :feature do
           project4 = hobbyist3.projects.create!(project_name: "Sew Halloween Costume", required_time: 60, current_completion: 70, start_cost: 150, cost_rate: 3)
           #act
           visit "/projects/#{project1[:id]}"
-          
           #assert
           expect(page).to have_content(project1.project_name)
           expect(page).to have_content(project1.required_time)

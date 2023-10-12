@@ -3,7 +3,7 @@
 <% @projects.each do |project| %>
   <h3><a href="/projects/<%= project.id %>"></a><%= project.project_name %></h3>
   <p>Required Time: <%= project.required_time %> hours</p>
-  <p>Current Completion: <%= project.required_time %>%</p>
+  <p>Current Completion: <%= project.current_completion %>%</p>
   <p>Start Cost: $<%= project.start_cost %></p>
   <p>Cost Rate: $<%= project.cost_rate %>/10hrs</p>
   <p>Complete: <%= project.completed %></p>
