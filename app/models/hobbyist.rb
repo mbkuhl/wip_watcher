@@ -1,5 +1,5 @@
 class Hobbyist < ApplicationRecord
-  has_many :WIPs
+  has_many :projects
 
   def actual_free_hours
     if has_kids
