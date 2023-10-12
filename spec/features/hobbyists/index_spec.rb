@@ -9,9 +9,10 @@ RSpec.describe "Hobbyists Index", type: :feature do
       describe "when I visit '/hobbyists'" do
         it "I see the name of each hobbyist" do
           #arrange
-          hobbyist1 = Hobbyist.create!(name: "Mike")
-          hobbyist2 = Hobbyist.create!(name: "Bob")
-          hobbyist3 = Hobbyist.create!(name: "Joe")
+          hobbyist1 = Hobbyist.create!(name: "Mike", weekly_free_hours: 10, disposible_income: 1000, has_kids: false)
+          hobbyist2 = Hobbyist.create!(name: "Bob", weekly_free_hours: 12, disposible_income: 10000, has_kids: true)
+          hobbyist3 = Hobbyist.create!(name: "Joe", weekly_free_hours: 5, disposible_income: 100000, has_kids: false)
+  
           #act
           visit "/hobbyists"
   

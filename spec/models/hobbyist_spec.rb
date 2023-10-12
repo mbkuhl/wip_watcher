@@ -8,6 +8,7 @@ describe Hobbyist, type: :model do
       expect(hobbyist.weekly_free_hours).to eq(12)
       expect(hobbyist.disposible_income).to eq(1000)
       expect(hobbyist.has_kids).to eq(false)
+      expect(hobbyist.actual_free_hours).to eq(12)
     end
   end
  

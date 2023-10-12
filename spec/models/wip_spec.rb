@@ -10,6 +10,8 @@ describe WIP, type: :model do
       expect(project.current_completion).to eq(60)
       expect(project.start_cost).to eq(40)
       expect(project.cost_rate).to eq(0)
+      expect(project.abandoned).to be false
+      expect(project.completed).to be false
       
     end
 
