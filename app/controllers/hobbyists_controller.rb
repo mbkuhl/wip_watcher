@@ -1,7 +1,7 @@
 class HobbyistsController < ApplicationController
 
   def index
-    @hobbyists = Hobbyist.all
+    @hobbyists = Hobbyist.all.order(created_at: :desc)
   end
 
   def show

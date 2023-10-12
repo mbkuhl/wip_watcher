@@ -17,6 +17,7 @@ RSpec.describe "Hobbyists Show", type: :feature do
         project3 = hobbyist2.projects.create!(project_name: "Replace Exterior Door", required_time: 20, current_completion: 10, start_cost: 700, cost_rate: 10)
         hobbyist3 = Hobbyist.create!(name: "Joe", weekly_free_hours: 5, disposible_income: 100000, has_kids: false)
         project4 = hobbyist3.projects.create!(project_name: "Sew Halloween Costume", required_time: 60, current_completion: 70, start_cost: 150, cost_rate: 3)
+        
         visit "/hobbyists/#{hobbyist2.id}/projects"
 
         expect(page).to have_content(hobbyist2.name)
