@@ -19,7 +19,7 @@ RSpec.describe "Hobbyists Show", type: :feature do
         project4 = hobbyist3.projects.create!(project_name: "Sew Halloween Costume", required_time: 60, current_completion: 70, start_cost: 150, cost_rate: 3)
         visit "/hobbyists/#{hobbyist2.id}/projects"
 
-        expect(page).to have_content(hobbyist1.name)
+        expect(page).to have_content(hobbyist2.name)
         projects = hobbyist2.projects
         projects.each do |project|
           expect(page).to have_content(project.project_name)
