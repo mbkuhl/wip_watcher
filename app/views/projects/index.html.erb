@@ -1,11 +1,11 @@
 <h1>Projects</h1>
 
 <% @projects.each do |project| %>
-<h3><a href="/projects/<%= project.id %>"></a><%= project.project_name %></h3>
-<p>Required Time: <%= project.required_time %> hours</p>
-<p>Current Completion: <%= project.required_time %>%</p>
-<p>Start Cost: $<%= project.start_cost %></p>
-<p>Cost Rate: $<%= project.cost_rate %>/10hrs</p>
-<p>Complete: $<%= project.completed %></p>
-<p>Abandoned: $<%= project.abandoned %></p>
+  <h3><a href="/projects/<%= project.id %>"></a><%= project.project_name %></h3>
+  <p>Required Time: <%= project.required_time %> hours</p>
+  <p>Current Completion: <%= project.required_time %>%</p>
+  <p>Start Cost: $<%= project.start_cost %></p>
+  <p>Cost Rate: $<%= project.cost_rate %>/10hrs</p>
+  <p>Complete: <%= project.completed %></p>
+  <p>Abandoned: <%= project.abandoned %></p>
 <% end %>
