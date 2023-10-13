@@ -5,3 +5,5 @@
 <p>Actual Free Hours: <%= @hobbyist.actual_free_hours %></p>
 <p>Disposible Income: <%= @hobbyist.disposible_income %></p>
 <p>Number of hobbies: <%= @project_count %></p>
+<br>
+<a href="/hobbyists/<%= @hobbyist.id %>/projects"><%= @hobbyist.name %>'s Projects</a>
