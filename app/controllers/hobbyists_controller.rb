@@ -6,6 +6,7 @@ class HobbyistsController < ApplicationController
 
   def show
     @hobbyist = Hobbyist.find(params[:id])
+    @project_count = @hobbyist.projects.count
   end
 
   def show_children
