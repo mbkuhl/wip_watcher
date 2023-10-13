@@ -1,0 +1,13 @@
+<h3>Create New Artist</h3>
+<%= form_with url: '/hobbyists', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label "Weekly Free Hours" %>
+  <%= form.text_field "Weekly Free Hours" %>
+  <%= form.label "Disposible Income" %>
+  <%= form.text_field "Disposible Income" %>
+  <%= form.label "Has Kids" %>
+  <%= form.text_field "Has Kids" %>
+
+  <%= form.submit "Create Hobbyist" %>
+<% end %>

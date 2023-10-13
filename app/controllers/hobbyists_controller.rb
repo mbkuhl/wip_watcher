@@ -17,4 +17,9 @@ class HobbyistsController < ApplicationController
   def new
 
   end
+
+  def create
+    Hobbyist.create(name: params[:name], weekly_free_hours: params["Weekly Free Hours"], disposible_income: params["Disposible Income"], has_kids: params["Has Kids"])
+    redirect_to '/hobbyists'
+  end
 end

@@ -46,6 +46,7 @@ RSpec.describe "Hobbyists New", type: :feature do
 
           expect(Hobbyist.last.name).to eq("Jimmy")
           expect(current_path).to eq("/hobbyists")
+          save_and_open_page
           expect(page).to have_content("Jimmy")
 
         end
