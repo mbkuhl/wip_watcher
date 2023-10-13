@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Hobbyists Index", type: :feature do
+RSpec.describe "Hobbyists New", type: :feature do
 
   before(:each) do
     @hobbyist1 = Hobbyist.create!(name: "Mike", weekly_free_hours: 10, disposible_income: 1000, has_kids: false)
@@ -27,12 +27,28 @@ RSpec.describe "Hobbyists Index", type: :feature do
 
   describe "As a visitor, when I visit the hobbyists index page" do
     describe "Then I see a link to create a new hobbyist record" do
-      it "When I click this link, I am taken to '/hobbyists/new, where I see a form for a new hobbyist" do
+      it "When I click this link, I am taken to '/hobbyists/new" do
         visit '/hobbyists'
         expect(page).to have_link("New Hobbyist", href: '/hobbyists/new')
         click_link "New Hobbyist"
         expect(current_path).to eq("/hobbyists/new")
+      end
 
+      describe "At '/hobbyist/new I see a form for a new hobbyist" do
+        it "Filling it out and clicking 'Create Hobbyist' will submit the form as a POST request to /hobbyists and redirect to the Hobbyist index page" do
+          visit "/hobbyists/new"
+          
+          fill_in('Name', with: 'Jimmy')
+          fill_in('Weekly Free Hours', with: '40')
+          fill_in('Disposible Income', with: '500')
+          fill_in('Has Kids', with: 'No')
+          click_button('Create Hobbyist')
+
+          expect(Hobbyist.last.name).to eq("Jimmy")
+          expect(current_path).to eq("/hobbyists")
+          expect(page).to have_content("Jimmy")
+
+        end
       end
     end
   end
