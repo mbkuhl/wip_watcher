@@ -1,0 +1,15 @@
+<h3>Create New Project</h3>
+<%= form_with url: "/hobbyists/#{@hobbyist.id}/projects", method: :post, local: true do |form| %>
+  <%= form.label "Project Name" %>
+  <%= form.text_field "Project Name" %>
+  <%= form.label "Required Time" %>
+  <%= form.text_field "Required Time" %>
+  <%= form.label "Current Completion" %>
+  <%= form.text_field "Current Completion" %>
+  <%= form.label "Start Cost" %>
+  <%= form.text_field "Start Cost" %>
+  <%= form.label "Cost Rate" %>
+  <%= form.text_field "Cost Rate" %>
+
+  <%= form.submit "Create Project" %>
+<% end %>

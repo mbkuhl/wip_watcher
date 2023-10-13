@@ -11,3 +11,5 @@
   <p>Complete: <%= project.completed %></p>
   <p>Abandoned: <%= project.abandoned %></p>
 <% end %>
+
+<%= link_to "New Project", "/hobbyists/#{@hobbyist.id}/projects/new"%>

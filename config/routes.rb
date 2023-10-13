@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get '/hobbyists', to: 'hobbyists#index'
   get 'hobbyists/new', to: 'hobbyists#new'
   get '/hobbyists/:id', to: 'hobbyists#show'
-  get '/hobbyists/:id/projects', to: 'hobbyists#show_children'
+  get '/hobbyists/:id/projects', to: 'hobbyists#show_projects'
+  get '/hobbyists/:id/projects/new', to: 'hobbyists#new_project'
   post '/hobbyists', to: 'hobbyists#create'
+  post '/hobbyists/:id/projects', to: 'hobbyists#create_project'
 
   get '/projects', to: 'projects#index'
   get '/projects/:id', to: 'projects#show'
