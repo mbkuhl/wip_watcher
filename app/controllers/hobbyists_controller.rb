@@ -19,7 +19,11 @@ class HobbyistsController < ApplicationController
   end
 
   def create
-    Hobbyist.create(name: params[:name], weekly_free_hours: params["Weekly Free Hours"], disposible_income: params["Disposible Income"], has_kids: params["Has Kids"])
+    Hobbyist.create(
+      name: params[:name], 
+      weekly_free_hours: params["Weekly Free Hours"], 
+      disposible_income: params["Disposible Income"], 
+      has_kids: params["Has Kids"])
     redirect_to '/hobbyists'
   end
 
@@ -29,7 +33,12 @@ class HobbyistsController < ApplicationController
 
   def create_project
     hobbyist = Hobbyist.find(params[:id])
-    hobbyist.projects.create(project_name: params["Project Name"], required_time: params["Required Time"], current_completion: params["Current Completion"], start_cost: params["Start Cost"], cost_rate: params["Cost Rate"])
+    hobbyist.projects.create(
+      project_name: params["Project Name"], 
+      required_time: params["Required Time"], 
+      current_completion: params["Current Completion"], 
+      start_cost: params["Start Cost"], 
+      cost_rate: params["Cost Rate"])
     redirect_to "/hobbyists/#{hobbyist.id}/projects"
   end
 end
