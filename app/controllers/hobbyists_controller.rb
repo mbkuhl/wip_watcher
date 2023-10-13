@@ -13,4 +13,8 @@ class HobbyistsController < ApplicationController
     @hobbyist = Hobbyist.find(params[:id])
     @projects = Hobbyist.find(params[:id]).projects
   end
+
+  def new
+
+  end
 end
