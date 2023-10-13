@@ -27,6 +27,10 @@ class HobbyistsController < ApplicationController
     redirect_to '/hobbyists'
   end
 
+  def update
+    @hobbyist = Hobbyist.find(params[:id])
+  end
+
   def new_project
     @hobbyist = Hobbyist.find(params[:id])
   end

@@ -7,3 +7,5 @@
 <p>Number of hobbies: <%= @project_count %></p>
 <br>
 <a href="/hobbyists/<%= @hobbyist.id %>/projects"><%= @hobbyist.name %>'s Projects</a>
+
+<%= link_to "Update Hobbyist", "/hobbyists/#{ @hobbyist.id }/update" %>
