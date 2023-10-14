@@ -31,6 +31,16 @@ class HobbyistsController < ApplicationController
     @hobbyist = Hobbyist.find(params[:id])
   end
 
+  def edit
+    hobbyist = Hobbyist.find(params[:id])
+    hobbyist.update(
+      name: params[:name], 
+      weekly_free_hours: params["Weekly Free Hours"], 
+      disposible_income: params["Disposible Income"], 
+      has_kids: params["Has Kids"])
+    redirect_to "/hobbyists/#{hobbyist.id}"
+  end
+
   def new_project
     @hobbyist = Hobbyist.find(params[:id])
   end

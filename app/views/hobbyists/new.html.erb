@@ -1,13 +1,13 @@
 <h3>Create New Hobbyist</h3>
 <%= form_with url: '/hobbyists', method: :post, local: true do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name %> <br>
   <%= form.label "Weekly Free Hours" %>
-  <%= form.text_field "Weekly Free Hours" %>
+  <%= form.text_field "Weekly Free Hours" %> <br>
   <%= form.label "Disposible Income" %>
-  <%= form.text_field "Disposible Income" %>
+  <%= form.text_field "Disposible Income" %> <br>
   <%= form.label "Has Kids" %>
   <%= form.text_field "Has Kids" %>
-
+<br>
   <%= form.submit "Create Hobbyist" %>
 <% end %>
