@@ -18,7 +18,7 @@ RSpec.describe "Hobbyists Show", type: :feature do
 
   describe "As a user" do
     describe "when I visit '/hobbyists/:id/projects'" do
-      it "Then I see each Child that is associated with that Parent with each Child's attributes" do
+      it "Then I see each project that is associated with that hobbyist with each project's attributes" do
 
         visit "/hobbyists/#{@hobbyist2.id}/projects"
 
@@ -33,6 +33,29 @@ RSpec.describe "Hobbyists Show", type: :feature do
           expect(page).to have_content(project.active)
           expect(page).to have_content(project.completed)
           expect(page).to have_content(project.abandoned)
+        end
+      end
+      # User Story 16, Sort Parent's Children in Alphabetical Order by name 
+      
+      # As a visitor
+      # When I visit the Parent's children Index Page
+      # Then I see a link to sort children in alphabetical order
+      # When I click on the link
+      # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+      
+      describe "The I see a ling to sotr project in alphebetical order" do
+        it "When I click on the link, I'm taken back to the Parent's children Index Page where I see all of the hobbyists projects in alphebetical order" do
+          project5 = @hobbyist2.projects.create!(project_name: "Make Ramen", required_time: 24, current_completion: 50, start_cost: 50, cost_rate: 0)
+          project6 = @hobbyist2.projects.create!(project_name: "Learn Coding", required_time: 1000, current_completion: 25, start_cost: 25000, cost_rate: 0)
+          visit "/hobbyists/#{@hobbyist2.id}/projects"
+          expect("Crochet Scarf").to appear_before("Replace Exterior Door")
+          expect("Replace Exterior Door").to appear_before("Make Ramen")
+          expect("Make Ramen").to appear_before("Learn Coding")
+          expect(page).to have_link("Sort Alphebetical", href: "/hobbyists/#{@hobbyist2.id}/projects")
+          expect(current_path).to eq("/hobbyists/#{@hobbyist2.id}/projects")
+          expect("Crochet Scarf").to appear_before("Learn Coding")
+          expect("Learn Coding").to appear_before("Make Ramen")
+          expect("Make Ramen").to appear_before("Replace Exterior Door")
         end
       end
     end
