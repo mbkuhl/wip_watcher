@@ -1,0 +1,19 @@
+<h3>Create New Project</h3>
+<%= form_with url: "/projects/#{@project.id}", method: :patch, local: true do |form| %>
+  <%= form.label "Project Name" %>
+  <%= form.text_field "Project Name" %> <br>
+  <%= form.label "Required Time" %>
+  <%= form.text_field "Required Time" %> <br>
+  <%= form.label "Current Completion" %>
+  <%= form.text_field "Current Completion" %> <br>
+  <%= form.label "Start Cost" %>
+  <%= form.text_field "Start Cost" %> <br>
+  <%= form.label "Cost Rate" %>
+  <%= form.text_field "Cost Rate" %>
+  <%= form.label "Completed" %>
+  <%= form.text_field "Completed" %>
+  <%= form.label "Abandoned" %>
+  <%= form.text_field "Abandoned" %>
+<br>
+  <%= form.submit "Update Project" %>
+<% end %>

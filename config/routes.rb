@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   get '/projects', to: 'projects#index'
   get '/projects/:id', to: 'projects#show'
+  patch '/projects/:id', to: 'projects#edit'
+  get '/projects/:id/update', to: 'projects#update'
 end

@@ -44,7 +44,6 @@ RSpec.describe "Hobbyists Update", type: :feature do
           fill_in('Weekly Free Hours', with: '4')
           fill_in('Disposible Income', with: '50000')
           fill_in('Has Kids', with: 'true')
-          save_and_open_page
           
           click_button('Update Hobbyist')
           expect(Hobbyist.find(id).name).to eq("eeeeeee")

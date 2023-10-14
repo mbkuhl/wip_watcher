@@ -1,4 +1,4 @@
-<h3>Create New Project</h3>
+<h3>Create New Project for <%= @hobbyist.name %></h3>
 <%= form_with url: "/hobbyists/#{@hobbyist.id}/projects", method: :post, local: true do |form| %>
   <%= form.label "Project Name" %>
   <%= form.text_field "Project Name" %>

@@ -7,3 +7,5 @@
 <p>Cost Rate: $<%= @project.cost_rate %>/10hrs</p>
 <p>Complete: <%= @project.completed %></p>
 <p>Abandoned: <%= @project.abandoned %></p>
+
+<%= link_to "Update Project", "/projects/#{ @project.id }/update" %>
