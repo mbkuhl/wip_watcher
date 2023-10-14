@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_12_041943) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_14_201723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_041943) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "hobbyist_id", null: false
+    t.boolean "active", default: true
     t.index ["hobbyist_id"], name: "index_projects_on_hobbyist_id"
   end
 

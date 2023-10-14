@@ -28,6 +28,7 @@ RSpec.describe "Projects Show", type: :feature do
           expect(page).to have_content(@project1.current_completion)
           expect(page).to have_content(@project1.start_cost)
           expect(page).to have_content(@project1.cost_rate)
+          expect(page).to have_content(@project1.active)
           expect(page).to have_content(@project1.completed)
           expect(page).to have_content(@project1.abandoned)
 

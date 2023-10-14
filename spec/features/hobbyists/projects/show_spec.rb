@@ -30,6 +30,7 @@ RSpec.describe "Hobbyists Show", type: :feature do
           expect(page).to have_content(project.current_completion)
           expect(page).to have_content(project.start_cost)
           expect(page).to have_content(project.cost_rate)
+          expect(page).to have_content(project.active)
           expect(page).to have_content(project.completed)
           expect(page).to have_content(project.abandoned)
         end

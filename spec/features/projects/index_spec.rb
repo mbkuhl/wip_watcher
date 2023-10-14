@@ -30,11 +30,28 @@ RSpec.describe "Projects Index", type: :feature do
             expect(page).to have_content(project.current_completion)
             expect(page).to have_content(project.start_cost)
             expect(page).to have_content(project.cost_rate)
+            expect(page).to have_content(project.active)
             expect(page).to have_content(project.completed)
             expect(page).to have_content(project.abandoned)
           end
-
         end
+
+          # User Story 15, Child Index only shows `true` Records 
+          
+          # As a visitor
+          # When I visit the child index
+          # Then I only see records where the boolean column is `true`
+
+        it "The I only see records where the active column is `true`" do
+          visit "/projects"
+          project_array = [@project1, @project2, @project3, @project4]
+          
+        
+        end
+      
       end
     end
+    
+
+
   end

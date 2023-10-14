@@ -44,6 +44,7 @@ RSpec.describe "Projects Update", type: :feature do
           fill_in('Current Completion', with: '15')
           fill_in('Start Cost', with: '80')
           fill_in('Cost Rate', with: '0')          
+          fill_in('Active', with: 'false')          
           fill_in('Completed', with: 'false')          
           fill_in('Abandoned', with: 'true')          
           click_button('Update Project')
@@ -54,6 +55,7 @@ RSpec.describe "Projects Update", type: :feature do
           expect(page).to have_content("Current Completion: 15%")
           expect(page).to have_content("Start Cost: $80")
           expect(page).to have_content("Cost Rate: $0/10hrs")
+          expect(page).to have_content("Active: false")
           expect(page).to have_content("Complete: false")
           expect(page).to have_content("Abandoned: true")
         end         
