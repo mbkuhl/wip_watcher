@@ -54,7 +54,6 @@ RSpec.describe "Projects Index", type: :feature do
           fill_in('Abandoned', with: 'true')          
           click_button('Update Project')
           visit "/projects"
-          save_and_open_page
           expect(page).to have_content("Build Shelves")
           expect(page).to_not have_content("Play BG3")
           expect(page).to have_content("Replace Exterior Door")
