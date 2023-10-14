@@ -10,6 +10,7 @@ RSpec.describe "Projects Index", type: :feature do
     @project3 = @hobbyist2.projects.create!(project_name: "Replace Exterior Door", required_time: 20, current_completion: 10, start_cost: 700, cost_rate: 10)
     @hobbyist3 = Hobbyist.create!(name: "Joe", weekly_free_hours: 5, disposible_income: 100000, has_kids: false)
     @project4 = @hobbyist3.projects.create!(project_name: "Sew Halloween Costume", required_time: 60, current_completion: 70, start_cost: 150, cost_rate: 3)
+    @project_array = [@project1, @project2, @project3, @project4]
   end
 
   # As a visitor
@@ -22,9 +23,8 @@ RSpec.describe "Projects Index", type: :feature do
         it "I see each project in the system including attributes" do
 
           visit "/projects"
-          project_array = [@project1, @project2, @project3, @project4]
           #assert
-          project_array.each do |project|
+          @project_array.each do |project|
             expect(page).to have_content(project.project_name)
             expect(page).to have_content(project.required_time)
             expect(page).to have_content(project.current_completion)
@@ -43,8 +43,23 @@ RSpec.describe "Projects Index", type: :feature do
           # Then I only see records where the boolean column is `true`
 
         it "The I only see records where the active column is `true`" do
+          visit "/projects/#{@project2.id}/update"
+          fill_in('Project Name', with: 'Play BG3')
+          fill_in('Required Time', with: '200')
+          fill_in('Current Completion', with: '15')
+          fill_in('Start Cost', with: '80')
+          fill_in('Cost Rate', with: '0')          
+          fill_in('Active', with: 'false')          
+          fill_in('Completed', with: 'false')          
+          fill_in('Abandoned', with: 'true')          
+          click_button('Update Project')
           visit "/projects"
-          project_array = [@project1, @project2, @project3, @project4]
+          save_and_open_page
+          expect(page).to have_content("Build Shelves")
+          expect(page).to_not have_content("Play BG3")
+          expect(page).to have_content("Replace Exterior Door")
+          expect(page).to have_content("Sew Halloween Costume")
+
           
         
         end
