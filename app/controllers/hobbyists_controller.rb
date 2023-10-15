@@ -12,6 +12,9 @@ class HobbyistsController < ApplicationController
   def show_projects
     @hobbyist = Hobbyist.find(params[:id])
     @projects = Hobbyist.find(params[:id]).projects
+    if params[:sort] == "alphabetical"
+      @projects = Hobbyist.sort_projects(params[:id])
+    end
   end
 
   def new
@@ -55,4 +58,5 @@ class HobbyistsController < ApplicationController
       cost_rate: params["Cost Rate"])
     redirect_to "/hobbyists/#{hobbyist.id}/projects"
   end
+
 end

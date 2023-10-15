@@ -9,4 +9,8 @@ class Hobbyist < ApplicationRecord
     end
   end
 
+  def self.sort_projects(hobbyist_id)
+    Hobbyist.find(hobbyist_id).projects.order(:project_name)
+  end
+
 end

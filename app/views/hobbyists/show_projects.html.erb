@@ -12,5 +12,7 @@
   <p>Complete: <%= project.completed %></p>
   <p>Abandoned: <%= project.abandoned %></p>
 <% end %>
-
+<br>
+<%= link_to "Sort Alphabetical", "/hobbyists/#{@hobbyist.id}/projects/alphabetical" %>
+<br>
 <%= link_to "New Project", "/hobbyists/#{@hobbyist.id}/projects/new"%>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/hobbyists/:id/update', to: 'hobbyists#update'
   get '/hobbyists/:id/projects', to: 'hobbyists#show_projects'
   get '/hobbyists/:id/projects/new', to: 'hobbyists#new_project'
+  get '/hobbyists/:id/projects/:sort', to: 'hobbyists#show_projects'
   post '/hobbyists', to: 'hobbyists#create'
   post '/hobbyists/:id/projects', to: 'hobbyists#create_project'
 

@@ -32,22 +32,45 @@ RSpec.describe "Hobbyists Index", type: :feature do
 
     # User Story 6, Parent Index sorted by Most Recently Created 
 
-# As a visitor
-# When I visit the parent index,
-# I see that records are ordered by most recently created first
-# And next to each of the records I see when it was created
-describe "As a visitor" do
-  describe "when I visit '/hobbyists'" do
-    it "I see that records are ordered by most recently created first, and next to each of the records I see when it was created" do
-      visit "/hobbyists"
+  # As a visitor
+  # When I visit the parent index,
+  # I see that records are ordered by most recently created first
+  # And next to each of the records I see when it was created
+  describe "As a visitor" do
+    describe "when I visit '/hobbyists'" do
+      it "I see that records are ordered by most recently created first, and next to each of the records I see when it was created" do
+        visit "/hobbyists"
 
-      #assert
-      expect(page).to have_content(@hobbyist1.created_at)
-      expect(page).to have_content(@hobbyist2.created_at)
-      expect(page).to have_content(@hobbyist3.created_at)
-      expect(@hobbyist3.name).to appear_before(@hobbyist2.name)
-      expect(@hobbyist2.name).to appear_before(@hobbyist1.name)
+          #assert
+          expect(page).to have_content(@hobbyist1.created_at)
+          expect(page).to have_content(@hobbyist2.created_at)
+          expect(page).to have_content(@hobbyist3.created_at)
+          expect(@hobbyist3.name).to appear_before(@hobbyist2.name)
+          expect(@hobbyist2.name).to appear_before(@hobbyist1.name)
+        end
+      end
+    end
+
+  # User Story 17, Parent Update From Parent Index Page 
+
+  # As a visitor
+  # When I visit the parent index page
+  # Next to every parent, I see a link to edit that parent's info
+  # When I click the link
+  # I should be taken to that parent's edit page where I can update its information just like in User Story 12
+
+  describe "As a visitor" do
+    describe "when I visit '/hobbyists' next to every parent, I see a link to edit that parent's info" do
+      it "When I click the link I should be taken to that parent's edit page where I can update its information" do
+        visit "/hobbyists"
+        hobbyists = Hobbyist.all
+        hobbyists.each do |hobbyist|
+          expect(page).to have_link("Update #{hobbyist.id}", href: "/hobbyists/#{hobbyist.id}/update")
+          click_link("Update #{hobbyist.id}")
+          expect(current_path).to eq("/hobbyists/#{hobbyist.id}/update")
+          visit "/hobbyists"
+        end
+      end
     end
   end
-end
 end

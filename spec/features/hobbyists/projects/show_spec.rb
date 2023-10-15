@@ -43,7 +43,7 @@ RSpec.describe "Hobbyists Show", type: :feature do
       # When I click on the link
       # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
       
-      describe "The I see a ling to sotr project in alphebetical order" do
+      describe "Then I see a link to sort project in alphebetical order" do
         it "When I click on the link, I'm taken back to the Parent's children Index Page where I see all of the hobbyists projects in alphebetical order" do
           project5 = @hobbyist2.projects.create!(project_name: "Make Ramen", required_time: 24, current_completion: 50, start_cost: 50, cost_rate: 0)
           project6 = @hobbyist2.projects.create!(project_name: "Learn Coding", required_time: 1000, current_completion: 25, start_cost: 25000, cost_rate: 0)
@@ -51,8 +51,9 @@ RSpec.describe "Hobbyists Show", type: :feature do
           expect("Crochet Scarf").to appear_before("Replace Exterior Door")
           expect("Replace Exterior Door").to appear_before("Make Ramen")
           expect("Make Ramen").to appear_before("Learn Coding")
-          expect(page).to have_link("Sort Alphebetical", href: "/hobbyists/#{@hobbyist2.id}/projects")
-          expect(current_path).to eq("/hobbyists/#{@hobbyist2.id}/projects")
+          expect(page).to have_link("Sort Alphabetical")
+          click_link("Sort Alphabetical")
+          expect(current_path).to eq("/hobbyists/#{@hobbyist2.id}/projects/alphabetical")
           expect("Crochet Scarf").to appear_before("Learn Coding")
           expect("Learn Coding").to appear_before("Make Ramen")
           expect("Make Ramen").to appear_before("Replace Exterior Door")
