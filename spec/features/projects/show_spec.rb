@@ -33,6 +33,28 @@ RSpec.describe "Projects Show", type: :feature do
           expect(page).to have_content(@project1.abandoned)
 
         end
+        
+        # User Story 20, Child Delete 
+        
+        # As a visitor
+        # When I visit a child show page
+        # Then I see a link to delete the child "Delete Child"
+        # When I click the link
+        # Then a 'DELETE' request is sent to '/child_table_name/:id',
+        # the child is deleted,
+        # and I am redirected to the child index page where I no longer see this child
+        
+        describe "Then I see a link to delete the project" do
+          describe "when I click the link a 'DELETE' request is sent to '/projects/:id'" do
+            it "The project is then deleted, and I am redirected back to the projects index" do
+              visit "/projects/#{@project2.id}"
+              expect(page).to have_link("Delete #{@project2.project_name}", href: "/projects/#{@project2.id}")
+              click_link("Delete #{@project2.project_name}")
+              expect(current_path).to eq("/projects")
+              expect(page).to_not have_content("#{@project2.project_name}")
+            end
+          end
+        end  
       end
     end
   end

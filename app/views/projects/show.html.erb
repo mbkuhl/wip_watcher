@@ -10,3 +10,4 @@
 <p>Abandoned: <%= @project.abandoned %></p>
 
 <%= link_to "Update Project", "/projects/#{ @project.id }/update" %>
+<%= link_to "Delete #{@project.project_name}", "/projects/#{ @project.id }", method: :delete %>
