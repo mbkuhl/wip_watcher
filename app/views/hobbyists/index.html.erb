@@ -4,7 +4,7 @@
 <h1>Hobbyists</h1>
 
 <% @hobbyists.each do |hobbyist| %>
-<p><a href="/hobbyists/<%= hobbyist.id %>"></a><%= hobbyist.name %></p>
+<p><a href="/hobbyists/<%= hobbyist.id %>"></a><%= hobbyist.name %></p> <%= link_to "Update #{hobbyist.name}", "/hobbyists/#{ hobbyist.id }/update" %>
 <p><%= hobbyist.created_at %></p>
 <% end %>
 

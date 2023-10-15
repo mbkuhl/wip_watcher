@@ -65,8 +65,8 @@ RSpec.describe "Hobbyists Index", type: :feature do
         visit "/hobbyists"
         hobbyists = Hobbyist.all
         hobbyists.each do |hobbyist|
-          expect(page).to have_link("Update #{hobbyist.id}", href: "/hobbyists/#{hobbyist.id}/update")
-          click_link("Update #{hobbyist.id}")
+          expect(page).to have_link("Update #{hobbyist.name}", href: "/hobbyists/#{hobbyist.id}/update")
+          click_link("Update #{hobbyist.name}")
           expect(current_path).to eq("/hobbyists/#{hobbyist.id}/update")
           visit "/hobbyists"
         end
