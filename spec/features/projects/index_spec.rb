@@ -58,14 +58,30 @@ RSpec.describe "Projects Index", type: :feature do
           expect(page).to_not have_content("Play BG3")
           expect(page).to have_content("Replace Exterior Door")
           expect(page).to have_content("Sew Halloween Costume")
-
-          
-        
         end
-      
       end
     end
-    
 
 
+# User Story 18, Child Update From Childs Index Page 
+
+# As a visitor
+# When I visit the `child_table_name` index page or a parent `child_table_name` index page
+# Next to every child, I see a link to edit that child's info
+# When I click the link
+# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 14
+  describe "As a user" do
+    describe "when I visit '/projects', next to every project, I see a link to edit that project's info" do
+      it "When I click the link, I should be taken to that project's edit page where I can update its information" do
+        visit "/projects"
+        projects = Project.all
+        projects.each do |project|
+          expect(page).to have_link("Update #{project.project_name}", href: "/projects/#{project.id}/update")
+          click_link("Update #{project.project_name}")
+          expect(current_path).to eq("/projects/#{project.id}/update")
+          visit "/projects"
+        end
+      end
+    end
   end
+end

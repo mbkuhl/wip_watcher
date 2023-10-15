@@ -61,7 +61,7 @@ RSpec.describe "Hobbyists Index", type: :feature do
 
   describe "As a visitor" do
     describe "when I visit '/hobbyists' next to every parent, I see a link to edit that parent's info" do
-      it "When I click the link I should be taken to that parent's edit page where I can update its information" do
+      it "When I click the link I should be taken to that hobbyists's edit page where I can update its information" do
         visit "/hobbyists"
         hobbyists = Hobbyist.all
         hobbyists.each do |hobbyist|
