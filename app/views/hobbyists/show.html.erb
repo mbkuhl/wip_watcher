@@ -9,3 +9,4 @@
 <a href="/hobbyists/<%= @hobbyist.id %>/projects"><%= @hobbyist.name %>'s Projects</a>
 
 <%= link_to "Update Hobbyist", "/hobbyists/#{ @hobbyist.id }/update" %>
+<%= link_to "Delete #{@hobbyist.name}", "/hobbyists/#{ @hobbyist.id }", method: :delete %>

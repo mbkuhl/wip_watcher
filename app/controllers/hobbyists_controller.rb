@@ -59,4 +59,12 @@ class HobbyistsController < ApplicationController
     redirect_to "/hobbyists/#{hobbyist.id}/projects"
   end
 
+  def destroy
+    hobbyist = Hobbyist.find(params[:id])
+    projects = hobbyist.projects 
+    projects.each { |project| project.destroy}
+    Hobbyist.destroy(params[:id])
+    redirect_to "/hobbyists"
+  end
+
 end
