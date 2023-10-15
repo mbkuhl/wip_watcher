@@ -75,22 +75,19 @@ RSpec.describe "Hobbyists Show", type: :feature do
       # the parent is deleted, and all child records are deleted
       # and I am redirected to the parent index page where I no longer see this parent
 
-      describe "Then I see a link to delete the hobbyist" do
-        describe "when I click the link a 'DELETE' request is sent to '/hobbyists/:id'" do
-          it "The hobbyist is then deleted along with all projects, and I am redirected back to the hobbyists index" do
-            visit "/hobbyists/#{@hobbyist2.id}"
-            expect(page).to have_link("Delete #{@hobbyist2.name}", href: "/hobbyists/#{@hobbyist2.id}")
-            click_link("Delete #{@hobbyist2.name}")
-            expect(current_path).to eq("/hobbyists")
-            expect(page).to_not have_content("#{@hobbyist2.name}")
-            visit "/projects"
-            expect(page).to_not have_content("#{@project2.project_name}")
-            expect(page).to_not have_content("#{@project3.project_name}")
-          end
+    describe "Then I see a link to delete the hobbyist" do
+      describe "when I click the link a 'DELETE' request is sent to '/hobbyists/:id'" do
+        it "The hobbyist is then deleted along with all projects, and I am redirected back to the hobbyists index" do
+          visit "/hobbyists/#{@hobbyist2.id}"
+          expect(page).to have_link("Delete #{@hobbyist2.name}", href: "/hobbyists/#{@hobbyist2.id}")
+          click_link("Delete #{@hobbyist2.name}")
+          expect(current_path).to eq("/hobbyists")
+          expect(page).to_not have_content("#{@hobbyist2.name}")
+          visit "/projects"
+          expect(page).to_not have_content("#{@project2.project_name}")
+          expect(page).to_not have_content("#{@project3.project_name}")
         end
       end
     end
-
-
-
+  end
 end
