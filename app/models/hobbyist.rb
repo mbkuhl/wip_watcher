@@ -13,4 +13,8 @@ class Hobbyist < ApplicationRecord
     Hobbyist.find(hobbyist_id).projects.order(:project_name)
   end
 
+  def self.filter_current_completion(hobbyist, current_completion)
+    hobbyist.projects.where("current_completion > #{current_completion}")
+  end
+
 end

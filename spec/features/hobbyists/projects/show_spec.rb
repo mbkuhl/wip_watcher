@@ -106,3 +106,22 @@ RSpec.describe "Hobbyists Show Projects", type: :feature do
     end
   end
 end
+
+# New
+#   <form action="/tasks" method="post">
+#   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+#   <p>Enter a new task:</p>
+#   <input type='text' name='title'/><br/>
+#   <textarea name='description'></textarea><br/>
+#   <input type='submit'/>
+# </form>
+
+# Edit
+# <form action="/tasks/<%= @task.id %>" method="post">
+#   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+#   <input type="hidden" name="_method" value="PATCH" />
+#   <p>Edit</p>
+#   <input type='text' name='title' value="<%= @task.title %>"/><br/>
+#   <textarea name='description'><%= @task.description %></textarea><br/>
+#   <input type='submit'/>
+# </form>

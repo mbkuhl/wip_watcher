@@ -17,3 +17,11 @@
 <%= link_to "Sort Alphabetical", :order => "alphabetical"  %>
 <br>
 <%= link_to "New Project", "/hobbyists/#{@hobbyist.id}/projects/new"%>
+
+  <form action="/hobbyists/<%= @hobbyist.id %>/projects" method="POST">
+    <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+    <input type="hidden" name="_method" value="GET">
+    <input type="submit" value="Only return records with more than 'number'% of current completion"/>
+    <textarea name='Current Completion'></textarea>
+  </form>
+

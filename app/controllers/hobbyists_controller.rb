@@ -15,6 +15,9 @@ class HobbyistsController < ApplicationController
     if params[:order] == "alphabetical"
       @projects = Hobbyist.sort_projects(params[:id])
     end
+    if params["Current Completion"]
+      @projects = Hobbyist.filter_current_completion(@hobbyist, params["Current Completion"])
+    end
   end
 
   def new
