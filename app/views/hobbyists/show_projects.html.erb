@@ -14,6 +14,6 @@
   <p>Abandoned: <%= project.abandoned %></p>
 <% end %>
 <br>
-<%= link_to "Sort Alphabetical", "/hobbyists/#{@hobbyist.id}/projects/alphabetical" %>
+<%= link_to "Sort Alphabetical", :order => "alphabetical"  %>
 <br>
 <%= link_to "New Project", "/hobbyists/#{@hobbyist.id}/projects/new"%>

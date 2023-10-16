@@ -12,7 +12,7 @@ class HobbyistsController < ApplicationController
   def show_projects
     @hobbyist = Hobbyist.find(params[:id])
     @projects = Hobbyist.find(params[:id]).projects
-    if params[:sort] == "alphabetical"
+    if params[:order] == "alphabetical"
       @projects = Hobbyist.sort_projects(params[:id])
     end
   end

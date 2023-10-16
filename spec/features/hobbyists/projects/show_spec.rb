@@ -53,7 +53,7 @@ RSpec.describe "Hobbyists Show Projects", type: :feature do
           expect("Make Ramen").to appear_before("Learn Coding")
           expect(page).to have_link("Sort Alphabetical")
           click_link("Sort Alphabetical")
-          expect(current_path).to eq("/hobbyists/#{@hobbyist2.id}/projects/alphabetical")
+          expect(current_path).to eq("/hobbyists/#{@hobbyist2.id}/projects")
           expect("Crochet Scarf").to appear_before("Learn Coding")
           expect("Learn Coding").to appear_before("Make Ramen")
           expect("Make Ramen").to appear_before("Replace Exterior Door")
@@ -81,6 +81,26 @@ RSpec.describe "Hobbyists Show Projects", type: :feature do
             expect(current_path).to eq("/projects/#{project.id}/update")
             visit "/hobbyists/#{hobbyist.id}/projects"
           end
+        end
+      end
+
+# As a visitor
+# When I visit the Parent's children Index Page
+# I see a form that allows me to input a number value
+# When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
+# Then I am brought back to the current index page with only the records that meet that threshold shown.
+      describe "I see a form that allows me to input a number value and click a submit button that reads 'Only return records with more than 'number' of 'current completion'" do
+        it "Then I am brought back to the current index page with only the records that meet that threshold shown" do
+          project5 = @hobbyist2.projects.create!(project_name: "Make Ramen", required_time: 24, current_completion: 50, start_cost: 50, cost_rate: 0)
+          project6 = @hobbyist2.projects.create!(project_name: "Learn Coding", required_time: 1000, current_completion: 51, start_cost: 25000, cost_rate: 0)
+          visit "/hobbyists/#{@hobbyist2.id}/projects"
+          fill_in('Current Completion', with: '50')
+          click_button("Only return records with more than 'number'% of current completion")
+          expect(current_path).to eq("/hobbyists/#{@hobbyist2.id}/projects")
+          expect(page).to have_content("Crochet Scarf")
+          expect(page).to_not have_content("Replace Exterior Door")
+          expect(page).to_not have_content("Make Ramen")
+          expect(page).to have_content("Learn Coding")
         end
       end
     end
