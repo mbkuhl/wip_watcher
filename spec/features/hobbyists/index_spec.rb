@@ -72,5 +72,34 @@ RSpec.describe "Hobbyists Index", type: :feature do
         end
       end
     end
+
+
+    # User Story 22, Parent Delete From Parent Index Page 
+
+    # As a visitor
+    # When I visit the parent index page
+    # Next to every parent, I see a link to delete that parent
+    # When I click the link
+    # I am returned to the Parent Index Page where I no longer see that parent
+
+    describe "When I visit the hobbyist index page, next to every hobbyist, I see a link to delete that hobbyist" do
+      it "When I click the link, I am returned to the parent index where I no longer see that parent" do
+        visit "/hobbyists"
+        expect(@hobbyist1.name).to appear_before("Delete #{@hobbyist1.name}")
+        expect("Delete #{@hobbyist1.name}").to appear_before(@hobbyist2.name)
+        expect(@hobbyist2.name).to appear_before("Delete #{@hobbyist2.name}")
+        expect("Delete #{@hobbyist2.name}").to appear_before(@hobbyist3.name)
+        expect(@hobbyist3.name).to appear_before("Delete #{@hobbyist3.name}")
+        click_link("Delete #{@hobbyist1.name}")
+        expect(page).to_not have_content(@hobbyist1.name)
+        expect(current_path).to eq("/hobbyists")
+        click_link("Delete #{@hobbyist3.name}")
+        expect(page).to_not have_content(@hobbyist3.name)
+        expect(current_path).to eq("/hobbyists")
+        click_link("Delete #{@hobbyist2.name}")
+        expect(page).to_not have_content(@hobbyist2.name)
+        expect(current_path).to eq("/hobbyists")
+      end
+    end
   end
 end
