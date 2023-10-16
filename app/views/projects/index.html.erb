@@ -6,6 +6,7 @@
 <% @projects.each do |project| %>
     <h3><a href="/projects/<%= project.id %>"></a><%= project.project_name %></h3> 
     <%= link_to "Update #{project.project_name}", "/projects/#{project.id}/update" %>
+    <%= link_to "Delete #{project.project_name}", "/projects/#{ project.id }", method: :delete %>
     <p>Required Time: <%= project.required_time %> hours</p>
     <p>Current Completion: <%= project.current_completion %>%</p>
     <p>Start Cost: $<%= project.start_cost %></p>

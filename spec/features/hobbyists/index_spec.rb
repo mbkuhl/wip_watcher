@@ -85,11 +85,11 @@ RSpec.describe "Hobbyists Index", type: :feature do
     describe "When I visit the hobbyist index page, next to every hobbyist, I see a link to delete that hobbyist" do
       it "When I click the link, I am returned to the hobbyist index where I no longer see that hobbyist" do
         visit "/hobbyists"
-        expect(@hobbyist1.name).to appear_before("Delete #{@hobbyist1.name}")
-        expect("Delete #{@hobbyist1.name}").to appear_before(@hobbyist2.name)
-        expect(@hobbyist2.name).to appear_before("Delete #{@hobbyist2.name}")
-        expect("Delete #{@hobbyist2.name}").to appear_before(@hobbyist3.name)
         expect(@hobbyist3.name).to appear_before("Delete #{@hobbyist3.name}")
+        expect("Delete #{@hobbyist3.name}").to appear_before(@hobbyist2.name)
+        expect(@hobbyist2.name).to appear_before("Delete #{@hobbyist2.name}")
+        expect("Delete #{@hobbyist2.name}").to appear_before(@hobbyist1.name)
+        expect(@hobbyist1.name).to appear_before("Delete #{@hobbyist1.name}")
         click_link("Delete #{@hobbyist1.name}")
         expect(page).to_not have_content(@hobbyist1.name)
         expect(current_path).to eq("/hobbyists")
