@@ -83,7 +83,7 @@ RSpec.describe "Hobbyists Index", type: :feature do
     # I am returned to the Parent Index Page where I no longer see that parent
 
     describe "When I visit the hobbyist index page, next to every hobbyist, I see a link to delete that hobbyist" do
-      it "When I click the link, I am returned to the parent index where I no longer see that parent" do
+      it "When I click the link, I am returned to the hobbyist index where I no longer see that hobbyist" do
         visit "/hobbyists"
         expect(@hobbyist1.name).to appear_before("Delete #{@hobbyist1.name}")
         expect("Delete #{@hobbyist1.name}").to appear_before(@hobbyist2.name)

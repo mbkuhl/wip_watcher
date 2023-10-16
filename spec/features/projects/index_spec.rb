@@ -82,6 +82,37 @@ RSpec.describe "Projects Index", type: :feature do
           visit "/projects"
         end
       end
+
+
+      # User Story 23, Child Delete From Childs Index Page 
+
+      # As a visitor
+      # When I visit the `child_table_name` index page or a parent `child_table_name` index page
+      # Next to every child, I see a link to delete that child
+      # When I click the link
+      # I should be taken to the `child_table_name` index page where I no longer see that child
+
+      describe "When I visit the project index page, next to every project, I see a link to delete that project" do
+        it "When I click the link, I am returned to the project index where I no longer see that project" do
+          visit "/projects"
+          expect(@project1.project_name).to appear_before("Delete #{@project1.project_name}")
+          expect("Delete #{@project1.project_name}").to appear_before(@project2.project_name)
+          expect(@project2.project_name).to appear_before("Delete #{@project2.project_name}")
+          expect("Delete #{@project2.project_name}").to appear_before(@project3.project_name)
+          expect(@project3.project_name).to appear_before("Delete #{@project3.project_name}")
+          expect("Delete #{@project3.project_name}").to appear_before(@project4.project_name)
+          expect(@project4.project_name).to appear_before("Delete #{@project4.project_name}")
+          click_link("Delete #{@project1.project_name}")
+          expect(page).to_not have_content(@project1.project_name)
+          expect(current_path).to eq("/projects")
+          click_link("Delete #{@project3.project_name}")
+          expect(page).to_not have_content(@project3.project_name)
+          expect(current_path).to eq("/projects")
+          click_link("Delete #{@project2.project_name}")
+          expect(page).to_not have_content(@project2.project_name)
+          expect(current_path).to eq("/projects")
+        end
+      end
     end
   end
 end
