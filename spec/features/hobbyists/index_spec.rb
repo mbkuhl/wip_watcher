@@ -132,5 +132,35 @@ RSpec.describe "Hobbyists Index", type: :feature do
         expect(@hobbyist1.name).to appear_before("Number of Hobbies: 1")
       end
     end
+
+
+# Extension 2: Search by name (exact match)
+
+# As a visitor
+# When I visit an index page ('/parents') or ('/child_table_name')
+# Then I see a text box to filter results by keyword
+# When I type in a keyword that is an exact match of one or more of my records and press the Search button
+# Then I only see records that are an exact match returned on the page
+    describe "When I visit the hobbyist index page, I see a text box to filter results by keyword" do
+      describe " When I type in a keyword that is an exact match of one or more of my records and press the Search button" do
+        it "Then I only see records that are an exact match on the return page" do
+          visit '/hobbyists'
+          expect(page).to have_content("Search by name - Exact Match")
+          fill_in('Name', with: 'Bob')
+          click_button("Search")
+          expect(current_path).to eq("/hobbyists")
+          expect(page).to have_content(@hobbyist2.name)
+          expect(page).to_not have_content(@hobbyist1.name)
+          expect(page).to_not have_content(@hobbyist3.name)
+          visit '/hobbyists'
+          fill_in('Name', with: 'Mike')
+          click_button("Search")
+          expect(page).to have_content(@hobbyist1.name)
+          expect(page).to_not have_content(@hobbyist2.name)
+          expect(page).to_not have_content(@hobbyist3.name)
+          
+        end
+      end
+    end
   end
 end
