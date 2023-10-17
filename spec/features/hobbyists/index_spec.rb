@@ -117,6 +117,9 @@ RSpec.describe "Hobbyists Index", type: :feature do
     describe "When I visit Hobbyists Index Page, Then I see a link to sort hobbyists by the number of project they have" do
       it "When I click the link, I'm returned to the same page, hobbyists are sorted descending by number of hobbies, also showing hobbies" do
         visit "/hobbyists"
+        expect(page).to_not have_content("Number of Hobbies: 3")
+        expect(page).to_not have_content("Number of Hobbies: 2")
+        expect(page).to_not have_content("Number of Hobbies: 1")
         expect(page).to have_link("Sort by Number of Hobbies")
         click_link("Sort by Number of Hobbies")
         expect(current_path).to eq("/hobbyists")

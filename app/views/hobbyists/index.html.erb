@@ -6,6 +6,9 @@
 <% @hobbyists.each do |hobbyist| %>
 <p>
 <a href="/hobbyists/<%= hobbyist.id %>"><%= hobbyist.name %></a> 
+<% if hobbyist.project_count %>
+<%= "Number of Hobbies: #{hobbyist.project_count}" %>
+<% end %>
 <%= link_to "Update #{hobbyist.name}", "/hobbyists/#{ hobbyist.id }/update" %>
 <%= link_to "Delete #{hobbyist.name}", "/hobbyists/#{ hobbyist.id }", method: :delete, data: {turbo_method: :delete} %>
 </p>
@@ -13,3 +16,5 @@
 <% end %>
 
 <%= link_to "New Hobbyist", "/hobbyists/new" %>
+
+<%= link_to "Sort by Number of Hobbies", :order => "num_hobbies"  %>

@@ -17,4 +17,22 @@ class Hobbyist < ApplicationRecord
     hobbyist.projects.where("current_completion > #{current_completion}")
   end
 
+  def self.sort_by_num_projects
+    projects = Hobbyist.all.reduce({}) do |count, hobbyist|
+      count[hobbyist] = hobbyist.projects.count
+      count
+    end
+    projects.sort_by { | _, count | count }.to_a.map { |count| count[0] }.reverse
+  end
+
+  def set_count(set_value = false)
+    if set_value
+      @project_count = projects.count
+    end
+  end
+
+  def project_count
+    @project_count
+  end
+
 end

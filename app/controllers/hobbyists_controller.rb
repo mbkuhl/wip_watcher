@@ -2,6 +2,10 @@ class HobbyistsController < ApplicationController
 
   def index
     @hobbyists = Hobbyist.all.order(created_at: :desc)
+    if params[:order] == "num_hobbies"
+      @hobbyists = Hobbyist.sort_by_num_projects
+      @hobbyists.each { |hobbyist| hobbyist.set_count(true) }
+    end
   end
 
   def show
