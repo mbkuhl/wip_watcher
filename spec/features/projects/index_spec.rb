@@ -114,5 +114,37 @@ RSpec.describe "Projects Index", type: :feature do
         end
       end
     end
+
+# As a visitor
+# When I visit an index page ('/parents') or ('/child_table_name')
+# Then I see a text box to filter results by keyword
+# When I type in a keyword that is an partial match of one or more of my records and press the Search button
+# Then I only see records that are an partial match returned on the page
+
+    describe "When I visit the projects index page, I see a text box to filter results by keyword" do
+      describe " When I type in a keyword that is a partial match of one or more of my records and press the Search button" do
+        it "Then I only see records that are a partial match on the return page" do
+          @project7 = @hobbyist3.projects.create!(project_name: "Crochet Purse", required_time: 60, current_completion: 70, start_cost: 150, cost_rate: 3)
+          visit '/projects'
+          expect(page).to have_content("Search by project name - Partial Match")
+          fill_in('Project Name', with: 'Crochet')
+          click_button("Search")
+          expect(current_path).to eq("/projects")
+          expect(page).to have_content(@project7.project_name)
+          expect(page).to have_content(@project2.project_name)
+          expect(page).to_not have_content(@project1.project_name)
+          expect(page).to_not have_content(@project3.project_name)
+          expect(page).to_not have_content(@project4.project_name)
+          visit '/projects'
+          fill_in('Project Name', with: 'Sew')
+          click_button("Search")
+          expect(page).to have_content(@project4.project_name)
+          expect(page).to_not have_content(@project1.project_name)
+          expect(page).to_not have_content(@project2.project_name)
+          expect(page).to_not have_content(@project3.project_name)
+          expect(page).to_not have_content(@project7.project_name)
+        end
+      end
+    end
   end
 end
