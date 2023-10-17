@@ -15,3 +15,11 @@
     <p>Complete: <%= project.completed %></p>
     <p>Abandoned: <%= project.abandoned %></p>
 <% end %>
+
+<p>Search by project name - Partial Match</p>
+<%= form_with url: '/projects', method: :get, local: true do |form| %>
+  <%= form.label "Project Name" %>
+  <%= form.text_field "Project Name" %> <br>
+  <br>
+  <%= form.submit "Search" %>
+  <% end %>

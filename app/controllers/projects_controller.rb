@@ -2,6 +2,9 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.where(active: true)
+    if params["Project Name"]
+      @projects = Project.where("project_name like ?", "%#{params["Project Name"]}%")
+    end
   end
 
   def show
