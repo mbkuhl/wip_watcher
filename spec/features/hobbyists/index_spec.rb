@@ -10,6 +10,9 @@ RSpec.describe "Hobbyists Index", type: :feature do
     @project3 = @hobbyist2.projects.create!(project_name: "Replace Exterior Door", required_time: 20, current_completion: 10, start_cost: 700, cost_rate: 10)
     @hobbyist3 = Hobbyist.create!(name: "Joe", weekly_free_hours: 5, disposible_income: 100000, has_kids: false)
     @project4 = @hobbyist3.projects.create!(project_name: "Sew Halloween Costume", required_time: 60, current_completion: 70, start_cost: 150, cost_rate: 3)
+    @project5 = @hobbyist2.projects.create!(project_name: "Make Ramen", required_time: 24, current_completion: 50, start_cost: 50, cost_rate: 0)
+    @project6 = @hobbyist3.projects.create!(project_name: "Learn Coding", required_time: 1000, current_completion: 51, start_cost: 25000, cost_rate: 0)
+
   end
 
   # For each parent table
@@ -99,6 +102,31 @@ RSpec.describe "Hobbyists Index", type: :feature do
         click_link("Delete #{@hobbyist2.name}")
         expect(page).to_not have_content(@hobbyist2.name)
         expect(current_path).to eq("/hobbyists")
+      end
+    end
+
+# Extension 1: Sort Parents by Number of Children 
+
+# As a visitor
+# When I visit the Parents Index Page
+# Then I see a link to sort parents by the number of `child_table_name` they have
+# When I click on the link
+# I'm taken back to the Parent Index Page where I see all of the parents in order of their count of `child_table_name` (highest to lowest) 
+# And, I see the number of children next to each parent name
+
+    describe "When I visit Hobbyists Index Page, Then I see a link to sort hobbyists by the number of project they have" do
+      it "When I click the link, I'm returned to the same page, hobbyists are sorted descending by number of hobbies, also showing hobbies" do
+        visit "/hobbyists"
+        expect(page).to have_link("Sort by Number of Hobbies")
+        click_link("Sort by Number of Hobbies")
+        expect(current_path).to eq("/hobbyists")
+        expect(@hobbyist2.name).to appear_before(@hobbyist3.name)
+        expect(@hobbyist3.name).to appear_before(@hobbyist1.name)
+        expect(@hobbyist2.name).to appear_before("Number of Hobbies: 3")
+        expect("Number of Hobbies: 3").to appear_before(@hobbyist3.name)
+        expect(@hobbyist3.name).to appear_before("Number of Hobbies: 2")
+        expect("Number of Hobbies: 2").to appear_before(@hobbyist1.name)
+        expect(@hobbyist1.name).to appear_before("Number of Hobbies: 1")
       end
     end
   end
