@@ -12,3 +12,5 @@ project2 = hobbyist2.projects.create!(project_name: "Crochet Scarf", required_ti
 project3 = hobbyist2.projects.create!(project_name: "Replace Exterior Door", required_time: 20, current_completion: 10, start_cost: 700, cost_rate: 10)
 hobbyist3 = Hobbyist.create!(name: "Joe", weekly_free_hours: 5, disposible_income: 100000, has_kids: false)
 project4 = hobbyist3.projects.create!(project_name: "Sew Halloween Costume", required_time: 60, current_completion: 70, start_cost: 150, cost_rate: 3)
+project5 = hobbyist2.projects.create!(project_name: "Make Ramen", required_time: 24, current_completion: 50, start_cost: 50, cost_rate: 0)
+project6 = hobbyist2.projects.create!(project_name: "Learn Coding", required_time: 1000, current_completion: 51, start_cost: 25000, cost_rate: 0)

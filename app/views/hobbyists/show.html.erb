@@ -10,4 +10,4 @@
 
 <%= link_to "Update Hobbyist", "/hobbyists/#{ @hobbyist.id }/update" %>
 
-<%= link_to "Delete #{@hobbyist.name}", "/hobbyists/#{ @hobbyist.id }", method: :delete %>
+<%= link_to "Delete #{@hobbyist.name}", "/hobbyists/#{ @hobbyist.id }", method: :delete, data: {turbo_method: :delete} %>

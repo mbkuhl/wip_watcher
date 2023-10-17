@@ -7,7 +7,7 @@
 <p>
 <a href="/hobbyists/<%= hobbyist.id %>"><%= hobbyist.name %></a> 
 <%= link_to "Update #{hobbyist.name}", "/hobbyists/#{ hobbyist.id }/update" %>
-<%= link_to "Delete #{hobbyist.name}", "/hobbyists/#{ hobbyist.id }", method: :delete %>
+<%= link_to "Delete #{hobbyist.name}", "/hobbyists/#{ hobbyist.id }", method: :delete, data: {turbo_method: :delete} %>
 </p>
 <p><%= hobbyist.created_at %></p>
 <% end %>

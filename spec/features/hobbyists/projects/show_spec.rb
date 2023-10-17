@@ -84,6 +84,8 @@ RSpec.describe "Hobbyists Show Projects", type: :feature do
         end
       end
 
+# User Story 21, Display Records Over a Given Threshold 
+
 # As a visitor
 # When I visit the Parent's children Index Page
 # I see a form that allows me to input a number value
@@ -94,6 +96,10 @@ RSpec.describe "Hobbyists Show Projects", type: :feature do
           project5 = @hobbyist2.projects.create!(project_name: "Make Ramen", required_time: 24, current_completion: 50, start_cost: 50, cost_rate: 0)
           project6 = @hobbyist2.projects.create!(project_name: "Learn Coding", required_time: 1000, current_completion: 51, start_cost: 25000, cost_rate: 0)
           visit "/hobbyists/#{@hobbyist2.id}/projects"
+          expect(page).to have_content("Crochet Scarf")
+          expect(page).to have_content("Replace Exterior Door")
+          expect(page).to have_content("Make Ramen")
+          expect(page).to have_content("Learn Coding")
           fill_in('Current Completion', with: '50')
           click_button("Only return records with more than 'number'% of current completion")
           expect(current_path).to eq("/hobbyists/#{@hobbyist2.id}/projects")
@@ -107,21 +113,9 @@ RSpec.describe "Hobbyists Show Projects", type: :feature do
   end
 end
 
-# New
-#   <form action="/tasks" method="post">
-#   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-#   <p>Enter a new task:</p>
-#   <input type='text' name='title'/><br/>
-#   <textarea name='description'></textarea><br/>
-#   <input type='submit'/>
-# </form>
-
-# Edit
-# <form action="/tasks/<%= @task.id %>" method="post">
-#   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-#   <input type="hidden" name="_method" value="PATCH" />
-#   <p>Edit</p>
-#   <input type='text' name='title' value="<%= @task.title %>"/><br/>
-#   <textarea name='description'><%= @task.description %></textarea><br/>
-#   <input type='submit'/>
+# <form action="/hobbyists/<%= @hobbyist.id %>/projects" method="POST">
+# <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+# <input type="hidden" name="_method" value="GET">
+# <input type="submit" value="Only return records with more than 'number'% of current completion"/>
+# <textarea name='Current Completion'></textarea>
 # </form>
