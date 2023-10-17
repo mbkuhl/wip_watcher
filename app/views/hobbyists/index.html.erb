@@ -18,3 +18,11 @@
 <%= link_to "New Hobbyist", "/hobbyists/new" %>
 
 <%= link_to "Sort by Number of Hobbies", :order => "num_hobbies"  %>
+
+<p>Search by name - Exact Match</p>
+<%= form_with url: '/hobbyists', method: :get, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %> <br>
+  <br>
+  <%= form.submit "Search" %>
+  <% end %>

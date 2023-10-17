@@ -6,6 +6,9 @@ class HobbyistsController < ApplicationController
       @hobbyists = Hobbyist.sort_by_num_projects
       @hobbyists.each { |hobbyist| hobbyist.set_count(true) }
     end
+    if params[:name]
+      @hobbyists = Hobbyist.where("name = '#{params[:name]}'")
+    end
   end
 
   def show
